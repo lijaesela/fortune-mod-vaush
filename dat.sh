@@ -1,24 +1,12 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 #
-# USAGE: dat.sh [directory]
-# generate ".dat" files for ranadom lookup
+# generate ".dat" files for fortune
 #
 
-[ "$1" ] && cd $1
-
-failiure=0
 for file in *; do
-	if [[ $file =~ \. ]]; then
-		echo "..."
-	else
-		if strfile "$file" &> /dev/null; then
-			echo "generated for $file"
-		else
-			echo -e "\e[31m${file}: failed.\e[m"
-			failiure=1
-		fi
-	fi
+   case "$file" in
+      *.*) echo "[34mskipping $file[m";;
+      *) strfile "$file";;
+   esac
 done
-
-[ $failiure = 1 ] && echo -e "\e[31mone or more files failed.\e[m"
