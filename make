@@ -1,11 +1,10 @@
-#!/bin/sh
+#!/bin/sh -e
 
 #
 # makefile, but it's actually a shell script because fuck makefile
 # customize "$dstdir" to fit your system
 #
 
-set -e
 dstdir="/usr/share/fortune"
 
 case "$1" in
